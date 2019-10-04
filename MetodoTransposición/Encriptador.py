@@ -25,24 +25,18 @@ class Encriptador:
             while puntero<len(texto):
                 datos[col].append(texto[puntero])
                 puntero+=largoClave
-        #Lista que almacena el numero decimal de los caracteres de la clave con un orden de menor a mayor para formar la cadena cifrada  
-        orden=[]
-        for e in datos:
-            orden.append(e[0]['numero'])
+        
             
-        orden.sort(reverse=False) 
+       
         
         cifrada=''
-        c=0
-        #Se forma la cadena cifrada segun el orden definido en la lista 'orden', se compara el numero de orden con numero del diccionario dentro de la lista de cada caracter en 'datos' 
-        for i in orden:
-            for e in datos:
-                if i==e[c]['numero']:
-                    for l in e:
-                        if type(l)==str:
-                            cifrada+=l
-                else:
-                    c+1
+        datos.sort(key = lambda x:x[0]['numero'])
+       
+        for e in datos:            
+                for l in e:
+                    if type(l)==str:
+                        cifrada+=l
+            
         
         s = ''
         return s.join(cifrada)
